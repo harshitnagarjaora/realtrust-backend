@@ -115,6 +115,13 @@ def get_projects():
     projects = Project.query.order_by(Project.created_at.desc()).all()
     return jsonify([p.to_dict() for p in projects])
 
+@app.route('/api/reset-db', methods=['GET', 'POST'])
+def reset_db():
+    """Reset database tables - use once after fixing column sizes"""
+    db.drop_all()
+    db.create_all()
+    return jsonify({'message': 'Database tables recreated!'})
+
 
 @app.route('/api/projects', methods=['POST'])
 def create_project():

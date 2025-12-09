@@ -38,7 +38,7 @@ class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image = db.Column(db.Text, nullable=False)
+    image = db.Column(db.Text(4294000000), nullable=False)  # LONGTEXT
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     def to_dict(self):

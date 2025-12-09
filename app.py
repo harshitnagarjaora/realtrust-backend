@@ -58,7 +58,7 @@ class Client(db.Model):
     name = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     designation = db.Column(db.String(200), nullable=False)
-    image = db.Column(db.Text, nullable=False)
+    image = db.Column(db.Text(4294000000), nullable=False)  # LONGTEXT
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     def to_dict(self):
